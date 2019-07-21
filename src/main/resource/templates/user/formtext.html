@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>formtext.html</title>
+</head>
+<body>
+  <h2>签名</h2>
+  <form name="formtext" action="#" th:action="@{/user/formtext}" th:object="${user}" method="post">
+  	<p>参数：<textarea name="text1" rows="30" cols="80" th:field="*{userName}"></textarea></p>
+  	<p>签名：<textarea name="text2" rows="5" cols="80" th:field="*{address}"></textarea></p>
+    <input type="submit" value="确定"/>
+  </form>
+</body>
+</html>
