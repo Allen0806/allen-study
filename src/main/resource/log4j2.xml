@@ -2,14 +2,11 @@
 <!-- status表示log4j2自身的输出日志级别，monitorInterval表示过多少秒后重新读取配置文件 -->
 <configuration status="WARN" monitorInterval="3000">
 	<properties>
-        <property name="log.home">D:/Logs/pt-study</property>
 		<!-- 
-        <property name="log.home">/Users/allen/Develop/workspace/logs/pt-user</property>
+        <property name="log.home">C:/Logs/jf-wallet-server</property>
         -->
-        <!--
-        <property name="log.home">/app/appuser/logs/pf-service</property>
-        -->
-        <property name="file.name">pf-study</property>
+        <property name="log.home">D:/Develop/Logs/allen-study</property>
+        <property name="file.name">allen-study</property>
         <property name="log.pattern">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %l - %msg%xEx%n</property>
         <property name="log.arms.pattern">%d{yyyy-MM-dd HH:mm:ss.SSS}|[%t]|%msg%xEx%n</property>
     </properties>
@@ -36,8 +33,8 @@
 				<!-- 按大小产生文件 -->
                 <SizeBasedTriggeringPolicy size="500 MB" />
                 <!-- 按时间产生文件 -->
-                <TimeBasedTriggeringPolicy />
-            </Policies>
+                <TimeBasedTriggeringPolicy />  
+            </Policies> 
             <DefaultRolloverStrategy max="30" />
 		</RollingFile>
 
@@ -49,24 +46,10 @@
 			<Filters>
 				<ThresholdFilter level="INFO" onMatch="ACCEPT"	onMismatch="DENY" />
             </Filters>
-			<Policies>
+			<Policies>  
                 <SizeBasedTriggeringPolicy size="500 MB" />
                 <TimeBasedTriggeringPolicy />
-            </Policies>
-            <DefaultRolloverStrategy max="30" />
-		</RollingFile>
-		<!-- arms 监控报警 -->
-		<RollingFile name="ArmsInfoLog" fileName="${log.home}/arms-${file.name}-info.log"
-			filePattern="${log.home}/$${date:yyyy-MM}/arms-${file.name}-info-%d{yyyy-MM-dd}-%i.log">
-			<!-- 只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch） -->
-			 <PatternLayout pattern="${log.arms.pattern}" />
-			<Filters>
-				<ThresholdFilter level="INFO" onMatch="ACCEPT"	onMismatch="DENY" />
-            </Filters>
-			<Policies>
-                <SizeBasedTriggeringPolicy size="500 MB" />
-                <TimeBasedTriggeringPolicy />
-            </Policies>
+            </Policies> 
             <DefaultRolloverStrategy max="30" />
 		</RollingFile>
 		
@@ -78,31 +61,32 @@
 				<!-- 只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch） -->
                 <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
             </Filters>
-			<Policies>
+			<Policies>  
                 <SizeBasedTriggeringPolicy size="500 MB" />
                 <TimeBasedTriggeringPolicy />
-            </Policies>
+            </Policies> 
             <DefaultRolloverStrategy max="30" />
 		</RollingFile>
 		
 		<!-- 这个会打印出所有的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档 -->
-		<RollingFile name="DruidSqlLog" fileName="${log.home}/${file.name}-druidsql.log"
+		<!--<RollingFile name="DruidSqlLog" fileName="${log.home}/${file.name}-druidsql.log"
 			filePattern="${log.home}/$${date:yyyy-MM}/${file.name}-druidsql-%d{yyyy-MM-dd}-%i.log">
 			<PatternLayout pattern="${log.pattern}" />
-			<Policies>
+			<Policies>  
                 <SizeBasedTriggeringPolicy size="500 MB" />
                 <TimeBasedTriggeringPolicy />
-            </Policies>
+            </Policies> 
             <DefaultRolloverStrategy max="30" />
-		</RollingFile>
+		</RollingFile>-->
 	</appenders>
 
 	<!-- 然后定义logger，只有定义了logger并引入的appender，appender才会生效 -->
 	<loggers>
+
         <!--记录druid-sql的记录-->
-        <Logger name="druid.sql.Statement" level="DEBUG" additivity="false">
+        <!-- <Logger name="druid.sql.Statement" level="DEBUG" additivity="false">
             <appender-ref ref="DruidSqlLog"/>
-        </Logger>
+        </Logger> -->
 
         <!--log4j2 自带过滤日志-->
         <!-- <Logger name="org.springframework" level="INFO" /> -->
@@ -118,11 +102,8 @@
         <logger name="org.springframework.boot.actuate.autoconfigure.CrshAutoConfiguration" level="WARN"/>
         <logger name="org.springframework.boot.actuate.endpoint.jmx" level="WARN"/>
         <logger name="org.thymeleaf" level="warn"/>
-        <logger name="Arms.logger" level="INFO" additivity="false">
-        	<AppenderRef ref="ArmsInfoLog"/>
-        </logger>
         
-		<Root level="INFO" includeLocation="true">
+		<Root level="DEBUG" includeLocation="true">
 			<AppenderRef ref="DebugLog" />
 			<AppenderRef ref="InfoLog" />
 			<AppenderRef ref="ErrorLog" />
