@@ -1,5 +1,7 @@
 package com.allen.test;
 
+import java.util.UUID;
+
 public class Student extends People {
 
 	public Student() {
@@ -12,6 +14,9 @@ public class Student extends People {
 	}
 
 	public static void main(String[] args) throws Exception{
-		
+		UUID uuid = java.util.UUID.randomUUID();
+		System.out.println(uuid.toString());
+		System.out.println(uuid.toString().replace("-", ""));
+		System.out.println(uuid.toString().length());
 	}
 }
