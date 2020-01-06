@@ -1,10 +1,8 @@
 package com.allen.study.java;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
 
 public class TenPlus {
 
@@ -12,13 +10,11 @@ public class TenPlus {
 		List<String> list = new ArrayList<String>();
 		for (int i = 0; i < 11; i++) {
 			for (int j = 0; i + j < 11; j++) {
-				int n = i + j;
 				list.add(i + "+" + j + "= " );
 			}
 		}
 		for (int i = 10; i >= 0; i--) {
 			for (int j = 0; j <= i; j++) {
-				int n = i - j;
 				list.add(i + "-" + j + "= " );
 			}
 		}

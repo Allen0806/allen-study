@@ -196,10 +196,10 @@ public class AliyunOssUtil {
 		if (ossClient != null) {
 			return;
 		}
-//		String endpoint = OssConstantProperties.OSS_END_POINT;
-//		String accessKeyId = OssConstantProperties.OSS_ACCESS_KEY_ID;
-//		String accessKeySecret = OssConstantProperties.OSS_ACCESS_KEY_SECRET;
-// 		ossClient = new OSSClient(endpoint, accessKeyId, accessKeySecret);
+		String endpoint = OssConstantProperties.OSS_END_POINT;
+		String accessKeyId = OssConstantProperties.OSS_ACCESS_KEY_ID;
+		String accessKeySecret = OssConstantProperties.OSS_ACCESS_KEY_SECRET;
+ 		ossClient = new OSSClient(endpoint, accessKeyId, accessKeySecret);
 
 		// JVM停止或重启时，关闭ossClient
 		Runtime.getRuntime().addShutdownHook(new Thread() {
