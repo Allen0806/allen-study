@@ -4,23 +4,17 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.2.4.RELEASE</version>
-		<relativePath />
+		<groupId>com.allen</groupId>
+		<artifactId>allen-parent</artifactId>
+		<version>1.0.0</version>
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.allen</groupId>
 	<artifactId>allen-study</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<name>allen-study</name>
 	<description>allen-study</description>
 	<properties>
-		<java.version>11</java.version>
-		<druid.version>1.1.21</druid.version>
-		<guava.version>28.1-jre</guava.version>
-		<mybatis.version>2.1.1</mybatis.version>
 		<allen.tools.version>1.0.0-SNAPSHOT</allen.tools.version>
-		<aliyun.oss.version>3.7.0</aliyun.oss.version>
 		<xxl.job.version>2.1.2</xxl.job.version>
 	</properties>
 	<dependencies>
@@ -31,12 +25,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-logging</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -53,13 +41,11 @@
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
-			<version>${mybatis.version}</version>
 		</dependency>
 		<!-- 数据库连接池 -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid-spring-boot-starter</artifactId>
-			<version>${druid.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
@@ -69,7 +55,6 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>${guava.version}</version>
 		</dependency>
 
 		<dependency>
@@ -91,7 +76,6 @@
 		<dependency>
 			<groupId>com.aliyun.oss</groupId>
 			<artifactId>aliyun-sdk-oss</artifactId>
-			<version>${aliyun.oss.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.allen</groupId>
