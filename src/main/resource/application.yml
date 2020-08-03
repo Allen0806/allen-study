@@ -18,9 +18,7 @@ server:
     # tomcat最大连接数
     max-connections: 2000
     accept-count: 5000
-    # tomcat最大线程数
-    max-threads: 1000
-    connection-timeout: 100
+    connection-timeout: 1000
     accesslog:
       # Buffer output such that it is only flushed periodically.
       buffered: true
@@ -42,13 +40,11 @@ server:
       rotate: true
       # Log file name suffix
       suffix: .log
+    # tomcat最大线程数    threads:      max: 1000  servlet:    encoding:      charset: UTF-8
 
 spring:
   application:
     name: allen-spring-boot
-  http:
-    encoding:
-      charset: UTF-8
   main:
     banner-mode: "off"
   datasource:
