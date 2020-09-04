@@ -3,14 +3,12 @@ package com.allen.study.algorithm;
 import java.util.HashMap;
 
 public class LRUCache<K, V> {
-	private int currentCacheSize;
 	private int CacheCapcity;
 	private HashMap<K, CacheNode> caches;
 	private CacheNode first;
 	private CacheNode last;
 
 	public LRUCache(int size) {
-		currentCacheSize = 0;
 		this.CacheCapcity = size;
 		caches = new HashMap<K, CacheNode>(size);
 	}

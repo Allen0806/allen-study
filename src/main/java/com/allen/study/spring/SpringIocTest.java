@@ -8,10 +8,11 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class SpringIocTest {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(SpringIocTest.class);
+	private static ApplicationContext ctx;
 	
 
 	public static void main(String[] args) {
-		ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+		ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 		User user = ctx.getBean(User.class);
 		LOGGER.info(user.toString());
 		user = (User)ctx.getBean("initUser");

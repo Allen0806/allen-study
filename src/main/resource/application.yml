@@ -23,7 +23,7 @@ server:
       # Buffer output such that it is only flushed periodically.
       buffered: true
       # Directory in which log files are created. Can be relative to the tomcat base dir or absolute.
-      directory: /app/appuser/logs/allen-spring-boot
+      directory: /app/appuser/logs/allen-study
       # Enable access log.
       enabled: true
       # Date format to place in log file name.
@@ -51,12 +51,12 @@ spring:
     #使用druid连接池
     type: com.alibaba.druid.pool.DruidDataSource
     # 配置基本属性
-    url: jdbc:mysql://192.168.74.129:3306/mydev?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&allowMultiQueries=true
+    url: jdbc:mysql://localhost:3306/mydev?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&allowMultiQueries=true
     username: mydev
     password: Mydev@1234
     #druid相关配置
     druid:
-      driver-class-name: com.mysql.jdbc.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
       # 配置初始化大小/最小/最大
       initial-size: 5
       min-idle: 5
@@ -92,53 +92,21 @@ spring:
         url-pattern: /*
         exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
         session-stat-enable: true
-        
-#rocketmq:
-  # 可不给定，默认固定为：allen-message-topic
-  # topic: allen-topic
-  # 可不给定，默认固定为：allen-message-tag
-  # tags: allen-tag
-#  name-server: 192.168.74.129:9876
-#  producer:
-    # 可不给定，默认固定为：
-#    group: allen-producer
-    # 可不指定，默认大小为4M
- #   max-message-size: 1048576
-    
-      
+  redis:
+    host: localhost
+    port: 6379
+#    password: admin1234
+    database: 0
+    timeout: 10000ms
+    lettuce:
+      pool:
+        min-idle: 5
+        max-idle: 10
+        max-active: 8
+        max-wait: 5000ms      
 #配置Mybatis
 mybatis:
   mapper-locations: classpath*:mapper/**/*.xml
   configuration:
-        # 开启驼峰命名转换，如：Table(create_time) -> Entity(createTime)。不需要我们关心怎么进行字段匹配，mybatis会自动识别`大写字母与下划线`
+    # 开启驼峰命名转换，如：Table(create_time) -> Entity(createTime)。不需要我们关心怎么进行字段匹配，mybatis会自动识别`大写字母与下划线`
     map-underscore-to-camel-case: true
-xxl:
-  job:
-    admin:
-      addresses: http://192.168.74.129:9080/xxl-job-admin
-    executor:
-      appname: allen-spring-boot
-      ip:
-      port: 0
-      logpath: /app/appuser/logs/allen-spring-boot/xxl-job
-      logretentiondays: -1
-    accessToken:
-# tool:
-#  redis:
-#    timeToLive: 15
-#    lettuce:
-#      pool:
-#        MaxTotal: 50
-#        minIdle: 1
-#        maxWaitMillis: 5000
-#        maxIdle: 5
-#    redis-a:
-#      database: 7
-#      hostName: 192.168.74.129
-#      port: 6379
-#      timeout: 5000
-#    redis-b:
-#      database: 3
-#      hostName: ${spring.redis.redis-a.hostName}
-#      port: ${spring.redis.redis-a.port}
-#      timeout: ${spring.redis.redis-a.timeout
