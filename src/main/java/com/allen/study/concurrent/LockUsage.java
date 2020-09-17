@@ -1,4 +1,4 @@
-package com.allen.study.regulation;
+package com.allen.study.concurrent;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;

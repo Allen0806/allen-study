@@ -1,10 +1,9 @@
-package com.allen.study.regulation;
+package com.allen.study.concurrent;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadInfo;
 import java.lang.management.ThreadMXBean;
 import java.util.concurrent.locks.ReentrantLock;
-
 
 public class LockInterrupt extends Thread {
 	public static ReentrantLock lock1 = new ReentrantLock();
@@ -13,7 +12,6 @@ public class LockInterrupt extends Thread {
 	int lock;
 
 	public LockInterrupt(int lock, String name) {
-
 		super(name);
 		this.lock = lock;
 	}
@@ -39,7 +37,7 @@ public class LockInterrupt extends Thread {
 				lock1.lockInterruptibly();
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		} finally {
 			if (lock1.isHeldByCurrentThread()) {
 				lock1.unlock();
@@ -62,11 +60,9 @@ public class LockInterrupt extends Thread {
 	}
 
 	static class DeadlockChecker {
-
 		private final static ThreadMXBean mbean = ManagementFactory.getThreadMXBean();
 
 		public static void check() {
-
 			Thread tt = new Thread(() -> {
 				{
 					// TODO Auto-generated method stub
@@ -95,6 +91,5 @@ public class LockInterrupt extends Thread {
 			tt.setDaemon(true);
 			tt.start();
 		}
-
 	}
 }

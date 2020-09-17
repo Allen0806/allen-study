@@ -1,4 +1,4 @@
-package com.allen.study.regulation;
+package com.allen.study.concurrent;
 
 public class ThreadLocalUsage {
 
