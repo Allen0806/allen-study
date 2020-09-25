@@ -8,7 +8,7 @@ public class Book {
 	static Book book = new Book();
 
 	static {
-		System.out.println("书的静态代码块");
+		System.out.println("书的静态代码块 ");
 	}
 
 	{
