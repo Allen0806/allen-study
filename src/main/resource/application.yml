@@ -23,7 +23,7 @@ server:
       # Buffer output such that it is only flushed periodically.
       buffered: true
       # Directory in which log files are created. Can be relative to the tomcat base dir or absolute.
-      directory: /app/appuser/logs/allen-study
+      directory: /Users/allen/Documents/Develop/logs/${spring.application.name}
       # Enable access log.
       enabled: true
       # Date format to place in log file name.
@@ -31,7 +31,7 @@ server:
       # Format pattern for access logs.
       pattern: common
       # Log file name prefix.
-      prefix: access_log
+      prefix: ${spring.application.name}-access-
       # Defer inclusion of the date stamp in the file name until rotate time.
       rename-on-rotate: false
       # Set request attributes for IP address, Hostname, protocol and port used for the request.
@@ -44,7 +44,7 @@ server:
 
 spring:
   application:
-    name: allen-spring-boot
+    name: allen-study
   main:
     banner-mode: "off"
   datasource:
