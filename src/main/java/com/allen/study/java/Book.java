@@ -26,5 +26,6 @@ public class Book {
 
 	int price = 110;
 	static int amount = 112;
+	public static final String STRING_FINAL = "字符串常量";
 
 }
