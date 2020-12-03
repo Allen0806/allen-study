@@ -1,4 +1,4 @@
-package com.allen.study.spring;
+package com.allen.study.spring.ioc;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

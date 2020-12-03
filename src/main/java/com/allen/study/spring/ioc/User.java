@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.allen.study.spring;
+package com.allen.study.spring.ioc;
 
 import java.io.Serializable;
 
